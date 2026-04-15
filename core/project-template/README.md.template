@@ -1,0 +1,94 @@
+# Projet [Nom] — Index
+
+## Navigation Rapide
+
+| Dossier | Contenu |
+|---------|---------|
+| [agents/](agents/) | Agents spécialisés pour ce projet |
+| [artifacts/](artifacts/) | Documents et livrables |
+| [decisions/](decisions/) | ADR et décisions architecturales |
+| [sessions/](sessions/) | Synthèses des sessions de brainstorming |
+
+---
+
+## Configuration
+
+- **[project.yaml](project.yaml)** — Configuration technique
+- **[PROJECT.md](PROJECT.md)** — Description narrative
+
+---
+
+## Agents du Projet
+
+| Agent | Rôle | Fichier |
+|-------|------|---------|
+| [Agent 1] | [Rôle] | [Lien] |
+
+*Créer les agents en copiant les templates depuis `core/templates/`*
+
+---
+
+## Artifacts (Livrables)
+
+| Document | Description | Statut |
+|----------|-------------|--------|
+| [Document 1] | [Description] | Draft / Validé |
+
+---
+
+## Décisions (ADR)
+
+| ADR | Décision | Statut |
+|-----|----------|--------|
+| [ADR-001] | [Décision] | Proposé / Accepté |
+
+---
+
+## Sessions de Brainstorming
+
+| Date | Sujet | Workflow | Synthèse |
+|------|-------|----------|----------|
+| [YYYY-MM-DD] | [Sujet] | [WF-*] | [Lien] |
+
+---
+
+## État du Projet
+
+**Phase actuelle** : [Phase]
+
+**Dernière activité** : [Description]
+
+**Prochaine étape** : [Étape]
+
+---
+
+## Quick Start
+
+### 1. Configurer le projet
+```bash
+# Éditer la configuration
+vim project.yaml
+vim PROJECT.md
+```
+
+### 2. Créer les agents
+```bash
+# Copier les templates nécessaires
+cp ../../core/templates/TPL-ARCHITECTE.md agents/AGENT-ARCHITECTE.md
+# Personnaliser selon le contexte
+```
+
+### 3. Lancer une session
+```bash
+# Choisir un workflow adapté
+# Voir ../../core/workflows/README.md
+```
+
+### 4. Documenter les résultats
+```bash
+# Créer une synthèse de session
+touch sessions/YYYY-MM-DD-sujet.md
+
+# Créer un ADR pour chaque décision
+touch decisions/ADR-001-decision.md
+```

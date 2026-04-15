@@ -1,0 +1,66 @@
+# Configuration du projet de brainstorming
+# Template — Dupliquer et personnaliser pour chaque projet
+
+project:
+  id: "mon-projet"                    # Identifiant unique (kebab-case)
+  name: "Nom du Projet"               # Nom complet
+  version: "1.0"
+  created: "YYYY-MM-DD"
+  status: "active"                    # active, completed, archived
+  
+# Métadonnées
+metadata:
+  type: "internal"                    # pfe, internal, client, research
+  organization: "Mon Organisation"
+  author: "Auteur Principal"
+  
+# Objectifs et métriques
+goals:
+  primary: "Objectif principal du projet"
+  secondary:
+    - "Objectif secondaire 1"
+    - "Objectif secondaire 2"
+  kpis:
+    - name: "KPI Principal"
+      target: "Valeur cible"
+      measurement: "Comment mesurer"
+
+# Contraintes du projet
+constraints:
+  timeline:
+    total: "X semaines"
+    mvp: "Semaine Y"
+  environment:
+    type: "Production / Sandbox / Hybride"
+  resources:
+    - "Contrainte 1"
+    - "Contrainte 2"
+
+# Stack technique (optionnel)
+stack:
+  # Personnaliser selon le projet
+
+# Agents actifs pour ce projet
+agents:
+  active:
+    - id: "AGENT-ARCHITECTE"
+      template: "TPL-ARCHITECTE"
+      customized: false               # true si surcharge du template
+    - id: "AGENT-CRITIQUE"
+      template: "TPL-CRITIQUE"
+      customized: false
+
+# Workflows utilisés
+workflows:
+  enabled:
+    - "WF-BRAINSTORM-IDEES"
+    - "WF-DESIGN-ARCHI"
+    - "WF-PLANIFICATION"
+    # Ajouter selon besoins
+
+# Phases du projet (optionnel)
+phases:
+  - id: "phase-1"
+    name: "Phase 1"
+    duration: "X semaines"
+    status: "planned"                 # planned, in_progress, completed

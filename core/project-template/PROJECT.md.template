@@ -1,0 +1,103 @@
+# Projet : [Nom du Projet]
+
+## Vue d'ensemble
+
+[Description courte du projet en 2-3 phrases]
+
+---
+
+## Contexte
+
+### Organisation
+[Nom de l'organisation / entreprise]
+
+### Problématique
+[Quel problème ce projet résout-il ?]
+
+### Périmètre
+[Qu'est-ce qui est inclus / exclu du projet ?]
+
+---
+
+## Objectifs
+
+### Objectif Principal
+**[Objectif SMART principal]**
+
+### Objectifs Secondaires
+- [Objectif 2]
+- [Objectif 3]
+
+### KPIs
+| KPI | Cible | Mesure |
+|-----|-------|--------|
+| [KPI 1] | [Valeur] | [Comment mesurer] |
+
+---
+
+## Contraintes
+
+### Techniques
+| Contrainte | Impact | Mitigation |
+|------------|--------|------------|
+| [Contrainte 1] | [Impact] | [Mitigation] |
+
+### Organisationnelles
+| Contrainte | Impact |
+|------------|--------|
+| [Contrainte 1] | [Impact] |
+
+### Temporelles
+- **Deadline** : [Date]
+- **Jalons** : [Liste des jalons]
+
+---
+
+## Stack Technique
+
+[Décrire la stack technique si pertinent]
+
+```
+[Diagramme ASCII optionnel]
+```
+
+---
+
+## Équipe
+
+| Rôle | Responsabilité |
+|------|----------------|
+| [Rôle 1] | [Responsabilité] |
+
+---
+
+## Planning
+
+| Phase | Durée | Objectif | Livrable |
+|-------|-------|----------|----------|
+| [Phase 1] | [X semaines] | [Objectif] | [Livrable] |
+
+---
+
+## Liens
+
+### Dossiers du projet
+- [Agents](agents/) — Agents spécialisés
+- [Artifacts](artifacts/) — Livrables
+- [Decisions](decisions/) — ADR
+- [Sessions](sessions/) — Sessions de brainstorming
+
+### Framework
+- [Core](../../core/) — Moteur du framework
+
+---
+
+## État Actuel
+
+**Phase** : [Phase actuelle]
+
+**Dernière mise à jour** : [Date]
+
+**Prochaines étapes** :
+1. [Étape 1]
+2. [Étape 2]
