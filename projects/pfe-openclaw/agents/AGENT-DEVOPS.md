@@ -26,6 +26,10 @@ Définir les cas d'usage CI/CD, les scénarios d'incidents, l'intégration avec 
 - **Prendre en compte les dépendances entre pipelines** dans le diagnostic
 - Identifier les causes racines récurrentes (dépendance cassée, config manquante, etc.)
 - Générer un résumé de diagnostic structuré
+- **Contraintes système de diagnostic (ADR-009)** :
+  - Le bot **NE PEUT PAS** relancer les builds
+  - Notification Teams = diagnostic + lien bug pré-rempli
+  - Debouncing : 1 notification / 30 min par signature d'erreur
 
 ### Phase 3 — Intégration Digital.ai Release (Semaines 10-13)
 - Installer et configurer le serveur MCP officiel Digital.ai Release
@@ -34,9 +38,11 @@ Définir les cas d'usage CI/CD, les scénarios d'incidents, l'intégration avec 
 - Générer des release notes contextuelles
 
 ### Phase 4 — Exécution & Correction (Semaines 14-17)
-- Relancer un pipeline après correction validée
+- ~~Relancer un pipeline après correction validée~~ **INTERDIT** : Le bot ne relance pas les builds
 - Créer un Work Item ADO avec le diagnostic et le plan d'action (via wit_create_work_item)
+- **Mode lien pré-rempli** : Le bot génère l'URL avec query params, l'humain crée le bug
 - Ajouter un commentaire d'audit sur le ticket existant (via wit_add_work_item_comment)
+- **Configurer webhook Teams** : MessageCard avec liens (Créer Bug, Voir Build)
 - ⚠️ Pas de bac à sable : mode dry-run obligatoire jusqu'à validation tuteur fin phase 1
 - Tester avec préfixe [OPENCLAW-TEST] sur un projet/area isolé en prod
 
@@ -55,6 +61,10 @@ Définir les cas d'usage CI/CD, les scénarios d'incidents, l'intégration avec 
 |----------|-------|---------------|
 | Détection d'incidents | Heartbeat + Webhook (hybride) | Heartbeat pour la couverture, webhook pour la réactivité |
 | Classification des erreurs | LLM + règles heuristiques | LLM pour les cas complexes, règles pour les patterns connus |
+| Notification Teams | Webhook entrant + MessageCard | Simple pour MVP, liens cliquables (pas de boutons interactifs) |
+| Création de bug | Lien pré-rempli (pas création auto) | Humain garde le contrôle, valide avant création |
+| Debouncing notifications | 1 notif / 30 min par signature | Évite la fatigue d'alertes |
+| Assignation bug | Logique hiérarchique (Owner > Blame > Auteur) | Exclut les bots, fallback sur non-assigné |
 | Priorisation des incidents | Basée sur l'impact (prod > staging > dev) | Aligné sur la réduction du MTTR des incidents critiques |
 | Environnement de test | Production uniquement avec dry-run | Pas de bac à sable disponible — mode simulation obligatoire |
 | Données de production | Lecture seule sur projets Isagri réels | Authentique mais sans risque de modification |
@@ -81,6 +91,9 @@ Définir les cas d'usage CI/CD, les scénarios d'incidents, l'intégration avec 
 | Baseline MTTR | Métriques actuelles extraites d'ADO | Semaine 3 |
 | Module de détection | Heartbeat + webhook configurés | Semaine 5 |
 | Classifieur d'erreurs | Diagnostic automatisé par type d'incident | Semaine 9 |
+| Webhook Teams | MessageCard avec liens (bug, build) | Semaine 6 |
+| Template URL bug | Query params pré-remplis pour ADO | Semaine 6 |
+| Module debouncing | 1 notif / 30 min par signature | Semaine 7 |
 | Intégration Digital.ai | Skill ou connecteur MCP fonctionnel | Semaine 13 |
 | Module d'exécution | Création de tickets + commentaires d'audit | Semaine 17 |
 | Rapport de mesure MTTR | Comparatif avant/après avec graphiques | Semaine 22 |

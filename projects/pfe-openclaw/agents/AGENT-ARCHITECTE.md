@@ -26,6 +26,10 @@ Définir l'architecture technique, les composants, les interfaces et les pattern
 - Intégrer la logique de dépendance entre pipelines (pipeline A → pipeline B)
 - Générer des plans d'action structurés (format JSON exploitable par l'humain)
 - Créer le dashboard de suivi (pipelines en cours + erreurs + contexte) — **MVP obligatoire**
+- **Implémenter le système de diagnostic** (voir ADR-009) :
+  - Flux 4 phases : Détection → Analyse → Formulation → Notification
+  - Debouncing 30 min par signature d'erreur
+  - Message Teams avec lien bug pré-rempli (pas de création auto)
 
 ### Phase 3 — Approve (Semaines 10-12)
 - Intégrer OpenClaw avec **Teams (canal dédié équipe DevOps)**
@@ -62,6 +66,9 @@ Définir l'architecture technique, les composants, les interfaces et les pattern
 | Framework agent | OpenClaw | Open-source, mémoire persistante, Heartbeat natif, idéal pour surveillance continue |
 | Protocole d'intégration | MCP (Model Context Protocol) | Standard émergent, serveur Microsoft officiel pour ADO, interopérabilité future |
 | Base de données d'erreurs | SQLite (POC) → PostgreSQL (V2) — **mémoire par pipeline** | Erreurs stockées avec pipeline_id, contexte, dépendances. Corrélation par pipeline en priorité |
+| Schéma diagnostic MVP | Table unique `diagnostic_log` | Simplifié pour MVP, normalisation V2. Voir ADR-009 |
+| Notification Teams | Webhook + MessageCard + liens | Pas de Bot Framework pour MVP. Lien bug pré-rempli, pas création auto |
+| Debouncing | 1 notification / 30 min par signature | Évite la notification fatigue |
 | Canal d'approbation | Teams (canal dédié équipe DevOps) | Outil déjà utilisé, boutons interactifs natifs, accès restreint à l'équipe DevOps |
 | Dashboard | Web app légère (Streamlit ou FastAPI + HTMX) — **MVP obligatoire** | Maintenance par l'agent lui-même, requirement du MVP non reportable |
 | Environnement de test | Production uniquement avec dry-run | Pas de bac à sable disponible — mode simulation obligatoire |
@@ -79,7 +86,8 @@ Définir l'architecture technique, les composants, les interfaces et les pattern
 | Complexité du dashboard > temps disponible | Haut | Moyen | Dashboard MVP minimal (tableau + filtres + contexte erreurs par pipeline) — non reportable |
 | Hallucination de l'agent sur le diagnostic | Haut | Moyen | Pattern RPAE strict + validation humaine obligatoire |
 | Mémoire par pipeline trop complexe à implémenter | Moyen | Moyen | Commencer par corrélation simple (pipeline_id + erreur), ajouter dépendances progressivement |
-| Mémoire par pipeline trop complexe à implémenter | Moyen | Moyen | Commencer par corrélation simple (pipeline_id + erreur), ajouter dépendances progressivement |
+| Qualité diagnostic LLM variable | Moyen | Moyen | Feedback loop (boutons utile/pas utile), affiner prompt en pilote |
+| Notification fatigue | Moyen | Moyen | Debouncing 30 min, compteur d'occurrences |
 
 ---
 

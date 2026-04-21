@@ -38,7 +38,7 @@ Utiliser **Microsoft Teams** avec un **canal dédié à l'équipe DevOps** comme
 │  │  │ [OpenClaw] Demande d'approbation       │ │    │
 │  │  │                                        │ │    │
 │  │  │ Pipeline: build-api-v2                 │ │    │
-│  │  │ Action: Relancer le build              │ │    │
+│  │  │ Action: Création de bug                │ │    │
 │  │  │ Risque: Faible                         │ │    │
 │  │  │                                        │ │    │
 │  │  │ [✓ Approuver]  [✗ Rejeter]            │ │    │
