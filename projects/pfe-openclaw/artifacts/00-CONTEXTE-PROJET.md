@@ -16,7 +16,7 @@
 | Protocole d'intégration | Model Context Protocol (MCP) |
 | CI/CD | Azure DevOps Pipelines |
 | Orchestration de Release | Digital.ai Release (via serveur MCP officiel) |
-| Canal d'approbation | Slack / Teams (boutons interactifs) |
+| Canal d'approbation | Teams (boutons interactifs, canal dédié) |
 | Authentification | Serveur MCP Microsoft (délégation standardisée) |
 | Audit | Commentaires automatiques dans Azure DevOps Work Items |
 | Environnement de test | Production uniquement (pas de bac à sable) — mode dry-run obligatoire |
@@ -27,8 +27,7 @@
 │                    OpenClaw Agent                           │
 │  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌──────────┐ │
 │  │   Read    │→ │   Plan    │→ │  Approve  │→ │ Execute  │ │
-│  │ (MCP)     │  │ (Diagnostic│  │ (Slack/   │  │ (MCP)    │ │
-│  │           │  │  + Plan)  │  │  Teams)   │  │          │ │
+│  │ (MCP)     │  │ (Diagnostic│  │ (Teams)   │  │ (MCP)    │ │
 │  └───────────┘  └───────────┘  └───────────┘  └──────────┘ │
 │         ↑              ↑             ↑              ↑       │
 │         └──────────────┴─────────────┴──────────────┘       │
@@ -39,7 +38,7 @@
 ┌──────────────┐ ┌──────────────┐ ┌─────────┐ ┌──────────────┐
 │ Azure DevOps │ │ Digital.ai   │ │ Humain  │ │ Azure DevOps │
 │ (via MCP)    │ │ Release      │ │ (via    │ │ (via MCP)    │
-│              │ │ (Skill custom│ │  Slack) │ │              │
+│              │ │ (Skill custom│ │  Teams) │ │              │
 │ - Logs       │ │  ou MCP)     │ │         │ │ - Tickets    │
 │ - Work Items │ │              │ │         │ │ - Commentaires│
 │ - Pipelines  │ │ - Releases   │ │         │ │ - Audit trail│

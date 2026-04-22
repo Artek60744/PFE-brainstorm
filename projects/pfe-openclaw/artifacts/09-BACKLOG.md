@@ -47,7 +47,7 @@
 | E1 | En tant que système, je crée un Work Item ADO avec le diagnostic et le plan si approuvé | P0 | Work Item créé avec préfixe [OPENCLAW-TEST] — uniquement après validation tuteur |
 | E2 | En tant que système, j'ajoute un commentaire d'audit sur le Work Item | P0 | Commentaire avec : action, validateur, timestamp |
 | E3 | En tant que système, je stocke l'action dans le journal d'audit local SQLite | P1 | Action queryable dans le journal |
-| E4 | En tant que système, je relance le pipeline si l'action approuvée est un retry | P2 | Pipeline relancé via MCP |
+| E4 | En tant que système, je crée un Work Item d'action (ex: retry) si approuvé | P2 | Work Item d'action créé, exécution manuelle humaine |
 
 ### Critères de Validation du MVP
 - [ ] Cycle RPAE complet fonctionnel en dry-run (prod contrôlée après validation tuteur)
@@ -143,5 +143,5 @@
 |-----------|-----|----|----|
 | **Must Have** | R1, R2, R5, P1, P2, P3, P4, A1, A2, E0, E1, E2, **DS1, DS2, DS3** | M1, M2, D1 | I1, I2, I3 |
 | **Should Have** | R3, R4, P3b, A3, A4, E3 | D2, D3, DS4, DS5, M3, M4 | V2-1, V2-3, G1, G2 |
-| **Could Have** | P5, A5, E4 | DS6, M5 | V2-2, V2-4, V2-5, I4, I5, G3, G4 |
+| **Could Have** | P5, A5 | DS6, M5 | V2-2, V2-4, V2-5, I4, I5, G3, G4 |
 | **Won't Have** | — | — | — |
