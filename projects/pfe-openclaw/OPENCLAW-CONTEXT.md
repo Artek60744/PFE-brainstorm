@@ -18,12 +18,14 @@ Implémenter **Read-Plan-Approve-Execute** (RPAE) agent via OpenClaw + MCP, pour
 
 | Type | Lien | Notes |
 |------|------|-------|
-| Architecture | `projects/pfe-openclaw/PROJECT.md` | Vue générale, stack |
-| Décisions | `projects/pfe-openclaw/decisions/ADR-*.md` | Tous les choix tech |
+| Architecture | `projects/pfe-openclaw/README.md` | Vue générale + liens |
+| Décisions | `projects/pfe-openclaw/decisions/ADR-*.md` | Tous les choix tech (16 ADRs) |
 | Dashboard | `projects/pfe-openclaw/artifacts/dashboard/` | UI + backend MVP |
-| Agents humains | `projects/pfe-openclaw/agents/` | Rôles brainstorming |
+| Agents humains | `projects/pfe-openclaw/agents/` | Rôles brainstorming (6 agents) |
 | Roadmap | `projects/pfe-openclaw/ROADMAP.md` | Implementation checklist |
 | Sessions | `projects/pfe-openclaw/sessions/` | Logs historiques |
+| Tech Stack | `projects/pfe-openclaw/artifacts/TECH-STACK.md` | Stack centralisée |
+| Blockers | `projects/pfe-openclaw/BLOCKERS.md` | Questions ouvertes (Q1-Q7 résolus) |
 
 ---
 

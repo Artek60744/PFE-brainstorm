@@ -42,6 +42,14 @@
 | [10-QUESTIONS-TUTEUR.md](artifacts/10-QUESTIONS-TUTEUR.md) | Questions pour le tuteur |
 | [11-SYNTHESIS-CONTRAINTES.md](artifacts/11-SYNTHESIS-CONTRAINTES.md) | Synthèse des contraintes |
 | [12-CAHIER-DES-CHARGES.md](artifacts/12-CAHIER-DES-CHARGES.md) | Cahier des charges |
+| **Configuration Guides (Phase 3)** | |
+| [MCP-CONFIGURATION.md](artifacts/MCP-CONFIGURATION.md) | MCP servers (ADO, DAI, Teams) + Q1-Q6 resolutions |
+| [TECH-STACK.md](artifacts/TECH-STACK.md) | Centralized technology stack (eliminates 6 redundances) |
+| [TEAMS-WEBHOOK-SETUP.md](artifacts/TEAMS-WEBHOOK-SETUP.md) | Teams webhook + Adaptive Cards (Q6 resolution) |
+| [SSO-LDAP-CONFIG.md](artifacts/SSO-LDAP-CONFIG.md) | Azure AD authentication setup (Q5 resolution) |
+| [APPROVAL-LEVELS.md](artifacts/APPROVAL-LEVELS.md) | 3-tier approval framework (Q7 resolution) |
+| [ADO-CUSTOM-FIELDS-ISAGRI.md](artifacts/ADO-CUSTOM-FIELDS-ISAGRI.md) | Custom field inventory + schema |
+| [DATABASE-MIGRATION-PLAN.md](artifacts/DATABASE-MIGRATION-PLAN.md) | SQLite → PostgreSQL migration strategy |
 
 ---
 
@@ -64,6 +72,7 @@
 | [ADR-013](decisions/ADR-013-diagnostic-sequentiel.md) | Diagnostic séquentiel (non parallèle) | Accepté |
 | [ADR-014](decisions/ADR-014-polling-dai.md) | Polling DAI release toutes les 30s | Accepté |
 | [ADR-015](decisions/ADR-015-no-correlation-mvp.md) | Pas de corrélation cross-pipeline en MVP | Accepté |
+| [ADR-016](decisions/ADR-016-dashboard-timing.md) | Dashboard S12, non S7 ou S13 | Accepté |
 
 ---
 

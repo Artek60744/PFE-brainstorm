@@ -90,37 +90,57 @@ Contient :
 
 ```
 projects/pfe-openclaw/
-├── PROJECT.md                 # Description narrative (existant)
 ├── README.md                  # Index du projet (existant)
 ├── project.yaml               # Config tech (existant)
 │
-├── ROADMAP.md                 # [NEW] 📍 VIEW d'ensemble sprints
-├── TODO.md                    # [NEW] ✅ Checklist rapide
-├── BLOCKERS.md                # [NEW] 🔴 Issues ouvertes
-├── OPENCLAW-CONTEXT.md        # [NEW] 💾 Mémoire agent
+├── ROADMAP.md                 # [EXISTING] 📍 Vue d'ensemble sprints
+├── TODO.md                    # [EXISTING] ✅ Checklist rapide
+├── BLOCKERS.md                # [EXISTING] 🔴 Issues ouvertes
+├── OPENCLAW-CONTEXT.md        # [EXISTING] 💾 Mémoire agent
+│
+├── ARCHIVE/
+│   └── PROJECT-2024-01-backup.md  # [ARCHIVED in Phase 2] Backup Jan 2024
 │
 ├── decisions/                 # ADRs (existant)
-│   ├── ADR-010-*.md
-│   ├── ADR-011-*.md
-│   ├── ... (12 files)
-│   └── ADR-015-*.md
+│   ├── ADR-001 to ADR-008.md  # Original ADRs
+│   ├── ADR-009 to ADR-015.md  # Implemented decisions
+│   └── ADR-016-dashboard-timing.md  # [NEW Phase 3] Dashboard S12 timeline
 │
-├── agents/                    # Définitions rôles (existant)
-│   ├── AGENT-ARCHITECTE.md
-│   ├── AGENT-DEVOPS.md
-│   └── ...
+├── agents/                    # Définitions rôles (existant + status emojis)
+│   ├── AGENT-ARCHITECTE.md 🟢
+│   ├── AGENT-DEVOPS.md 🟢
+│   ├── AGENT-SECURITE.md 🟢
+│   ├── AGENT-PRODUIT.md 🟢
+│   ├── AGENT-CRITIQUE.md 🟢
+│   └── AGENT-RECHERCHE/05-AGENT-RECHERCHE.md 🟢
 │
-├── artifacts/dashboard/       # Code + schemas (existant)
-│   ├── app.py
-│   ├── schema.sql
-│   ├── schema_dai.sql
-│   ├── templates.html
-│   ├── dai_heartbeat.py
-│   └── (TODO: dai_client.py, ado_webhook.py, ...)
+├── artifacts/
+│   ├── 00-CONTEXTE-PROJET.md       # [UPDATED Phase 1] Slack removed
+│   ├── 07-PLAN-REALISATION.md
+│   ├── 08-STRUCTURE-MEMOIRE.md
+│   ├── 09-BACKLOG.md               # [UPDATED Phase 1] E4 bot scope fixed
+│   ├── 10-QUESTIONS-TUTEUR.md
+│   ├── 11-SYNTHESIS-CONTRAINTES.md
+│   ├── 12-CAHIER-DES-CHARGES.md
+│   │
+│   ├── MCP-CONFIGURATION.md        # [NEW Phase 1] Q1-Q6 blocker resolutions
+│   ├── ADO-CUSTOM-FIELDS-ISAGRI.md # [NEW Phase 3] Custom field inventory
+│   ├── DATABASE-MIGRATION-PLAN.md  # [NEW Phase 3] SQLite→PostgreSQL roadmap
+│   ├── TEAMS-WEBHOOK-SETUP.md      # [NEW Phase 3] Q6 webhook guide
+│   ├── SSO-LDAP-CONFIG.md          # [NEW Phase 3] Q5 Azure AD auth
+│   ├── APPROVAL-LEVELS.md          # [NEW Phase 3] Q7 tier framework
+│   ├── TECH-STACK.md               # [NEW Phase 3] Centralized tech reference
+│   │
+│   └── dashboard/                  # Code + schemas (existant)
+│       ├── app.py
+│       ├── schema.sql
+│       ├── schema_dai.sql
+│       ├── templates.html
+│       └── dai_heartbeat.py
 │
-└── sessions/                  # Logs sessions (existant)
-    ├── SESSION-2026-04-21.md  # [NEW]
-    └── (futurs)
+└── sessions/                  # Logs sessions (existant + renamed)
+    ├── SESSION-2026-04-16-diagnostic-architecture.md  # [RENAMED Phase 2]
+    └── SESSION-2026-04-21-audit-planning.md          # [RENAMED Phase 2]
 ```
 
 ---
@@ -129,9 +149,9 @@ projects/pfe-openclaw/
 
 ### 1️⃣ **Première visite ?**
 Lire dans cet ordre :
-1. `PROJECT.md` (contexte PFE)
+1. `README.md` (index global)
 2. `OPENCLAW-CONTEXT.md` (architecture RPAE)
-3. `ROADMAP.md` (sprints globaux)
+3. `ROADMAP.md` (sprints 1A-4 détaillés)
 
 ### 2️⃣ **Commencer un sprint ?**
 1. Ouvrir `ROADMAP.md` → Section "Sprint N"
@@ -151,13 +171,15 @@ Lire `OPENCLAW-CONTEXT.md` en entier (mémoire persistante de sa mission).
 
 ## 📊 Statistiques
 
-| Métrique | Valeur |
-|----------|--------|
-| Fichiers créés | 5 |
-| Total lignes | ~1500 |
-| Sprints documentés | 4 |
-| Blockers tracked | 10 |
-| Tâches listées | ~50 |
+| Métrique | Valeur | Status |
+|----------|--------|--------|
+| Fichiers créés Phase 1-3 | 12 | ✅ Complete |
+| Documents archivés | 1 (PROJECT.md) | ✅ Complete |
+| ADRs totaux | 16 | ✅ Complete |
+| Agents avec status emoji | 6 | ✅ Complete |
+| Total lignes (Phase 1-3 docs) | 5500+ | ✅ Complete |
+| Blockers résolus (Q1-Q7) | 7/7 | ✅ Complete |
+| Broken links fixed | All references updated | ✅ Complete |
 
 ---
 
