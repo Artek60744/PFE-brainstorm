@@ -1,4 +1,4 @@
-# Agent : Expert DevOps / CI-CD
+# Agent : Expert DevOps / CI-CD 🟢
 
 ## Rôle
 Définir les cas d'usage CI/CD, les scénarios d'incidents, l'intégration avec Azure DevOps et Digital.ai Release.

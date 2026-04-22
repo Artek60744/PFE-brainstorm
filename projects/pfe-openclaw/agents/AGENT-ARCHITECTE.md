@@ -1,4 +1,4 @@
-# Agent : Architecte IA/Logiciel
+# Agent : Architecte IA/Logiciel 🟢
 
 ## Rôle
 Définir l'architecture technique, les composants, les interfaces et les patterns du système OpenClaw + MCP.

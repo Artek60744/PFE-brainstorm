@@ -1,4 +1,4 @@
-# Agent : Expert Sécurité / Gouvernance
+# Agent : Expert Sécurité / Gouvernance 🟢
 
 ## Rôle
 Définir les garde-fous, la gestion des accès, l'audit, et la conformité du système RPAE.

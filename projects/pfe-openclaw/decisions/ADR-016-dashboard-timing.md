@@ -1,27 +1,26 @@
-# ADR-016: Dashboard Implementation Timeline (S7-S9 vs S13)
+# ADR-016 : Timing d'Implémentation du Dashboard (S12 vs S7-S9 vs S13)
 
-**Status**: Accepted  
-**Decision Date**: 2026-04-22  
-**Context**: Clarify conflicting dashboard timeline (MVP section says S15 end date, but implementation starts S12)  
-**Owner**: Product + Architecture
+## Statut
+**Accepté** — Timeline clarifiée
 
----
+## Date
+22 avril 2026
 
-## Problem Statement
+## Contexte
 
-Dashboard implementation timeline is ambiguous in project planning:
+La timeline du dashboard était ambiguë dans la planification du projet :
 
-- **PLAN-REALISATION.md** says: Dashboard MVP implemented in **S12** (Phase 3)
-- **BACKLOG.md** says: Dashboard MVP is part of MVP scope ending **S15**
-- **BLOCKERS.md** initially listed this as priority inconsistency
+- **PLAN-REALISATION.md** dit : Dashboard MVP implémenté en **S12** (Phase 3)
+- **BACKLOG.md** dit : Dashboard MVP part du scope MVP se terminant **S15**
+- **BLOCKERS.md** listait initialement cela comme incohérence prioritaire
 
-**Question**: When should dashboard development start? S7-S9 or S12?
+**Question** : Quand devrait-on démarrer le développement du dashboard ? S7-S9 ou S12 ou S13 ?
 
----
+## Décision
 
-## Solution
+Le dashboard doit être **construit en S12** (pas avant, pas après), avec validation en S13-S15.
 
-### Dashboard Timeline (FINAL DECISION)
+## Justification
 
 ```
 Phase 0 (S1-S3):   Discovery + Architecture ← Dashboard sketched but not built
@@ -35,210 +34,55 @@ MVP Validation (S13-S15): Testing + measurement ← Dashboard already live, used
 V1 (S16-S20): Post-MVP improvements ← Dashboard enhanced with metrics, custom fields
 ```
 
-### Rationale
+### Arguments en faveur de S12
 
-1. **Dashboard is NOT blocking MVP**
-   - MVP can complete diagnostic/approval cycle without visual dashboard
-   - Teams cards provide approval interface
+1. **Le dashboard n'est pas bloquant pour le MVP**
+   - Le MVP peut terminer le cycle diagnostic/approbation sans interface visuelle
+   - Les cartes Teams fournissent l'interface d'approbation
 
-2. **Dashboard improves MVP validation**
-   - Implementing dashboard in S12 allows S13-S15 to test with working UI
-   - Better incident context visible in dashboard accelerates diagnostics
+2. **Le dashboard améliore la validation du MVP**
+   - Implémenter le dashboard en S12 permet à S13-S15 de tester avec une UI fonctionnelle
+   - Meilleur contexte visible dans le dashboard accélère les diagnostics
 
-3. **"MVP" refers to scope, not timeline**
-   - MVP scope includes dashboard (must-have feature)
-   - MVP scope deadline is S15
-   - Dashboard implementation can be S12 because it's not dependency-blocking
+3. **"MVP" se réfère au scope, pas à la timeline**
+   - Scope MVP inclut le dashboard (feature must-have)
+   - Deadline scope MVP = S15
+   - Implémentation dashboard peut être S12 car non dépendance-bloquante
 
-4. **Parallel execution possible**
-   - Execute phase (E0-E4) can run without dashboard
-   - Dashboard built in parallel (S12) after Approve phase matures (S10-S11)
+4. **Exécution parallèle possible**
+   - Phase Execute (E0-E4) peut tourner sans dashboard
+   - Dashboard construit en parallèle (S12) après stabilisation phase Approve (S10-S11)
 
----
+## Conséquences
 
-## Detailed Timeline
-
-### Phase 3: Execute + Dashboard (S10-S12)
+### Timeline du Dashboard (DÉCISION FINALE)
 
 ```
-Week 10-11 (Phase 3a): 
-  - [ ] Finalize Execute phase (E0, E1, E2, E3)
-  - [ ] Dashboard design locked (UX review with team)
-  - [ ] Data schema finalized (schema.sql, schema_dai.sql)
+Phase 0 (S1-S3):   Discovery + Architecture ← Dashboard esquisé, pas construit
+Phase 1 (S4-S6):   Implémentation Read ← Dashboard NON requis
+Phase 2 (S7-S11):  Implémentation Plan + Approve ← Design finalisé
+Phase 3 (S10-S12): Execute + Dashboard MVP ← BUILD démarre en S12
+                                             ← COMPLET à fin S12
 
-Week 12 (Phase 3b):
-  - [ ] Dashboard MVP build
-    - [ ] FastAPI setup + authentication
-    - [ ] HTMX incident list page
-    - [ ] Incident detail view with diagnostic context
-    - [ ] Approval status display
-    - [ ] Audit log viewer
-  - [ ] Integration with SQLite (read incidents_ado, releases_dai)
-  - [ ] Testing: smoke tests on dashboard pages
-  - [ ] Documentation: dashboard user guide
+Validation MVP (S13-S15): Test + mesure ← Dashboard live, utilisé pour tests
+
+V1 (S16-S20): Améliorations post-MVP ← Dashboard enrichi avec métriques, champs custom
 ```
 
-### Phase 4: MVP Validation (S13-S15)
+### Pourquoi PAS plus tôt ? (Pourquoi pas S7-S9)
 
-```
-Week 13-14:
-  - Dashboard populated with real incident data
-  - Team uses dashboard to review diagnostics
-  - User feedback collected
+Le dashboard n'est pas requis tant que phase Approve n'est pas mature :
 
-Week 15:
-  - Dashboard bug fixes
-  - Performance optimization
-  - MVP validation complete
-```
+- S4-S9 : Focus sur logique Read, Plan, Approve
+- Dashboard oisif sans données de diagnostic fonctionnelles
+- Prioriser cycle RPAE core d'abord, UI second
+- S7-S9 doit focus sur complexité Plan + Approve
 
----
+### Pourquoi PAS plus tard ? (Pourquoi pas S13)
 
-## Implementation Checklist (S12)
+Le dashboard est nécessaire pour validation MVP :
 
-### Code
-
-- [ ] FastAPI app.py with 5+ endpoints
-- [ ] HTML templates (Jinja2) for list/detail pages
-- [ ] HTMX endpoints for dynamic updates
-- [ ] SQLite queries for incidents, releases, audit_log
-- [ ] Authentication middleware (Azure AD)
-
-### Data Integration
-
-- [ ] List incidents_ado with pagination
-- [ ] Display related releases_dai for context
-- [ ] Show approval status (pending/approved/rejected)
-- [ ] Display audit trail
-
-### Features
-
-- [ ] **Incident list**: Sortable by date, pipeline, status
-- [ ] **Incident detail**: Full context (logs, custom fields, diagnostics)
-- [ ] **Diagnostic display**: Root cause, recommended action, risk level
-- [ ] **Approval history**: Who approved, when, outcome
-- [ ] **Audit log**: All actions with timestamp + actor
-
-### Testing
-
-- [ ] Unit tests for FastAPI endpoints (using TestClient)
-- [ ] Integration tests with SQLite mock data
-- [ ] HTMX interaction tests
-- [ ] Authentication tests (Azure AD token validation)
-- [ ] Performance tests (list page < 2 sec with 100 incidents)
-
-### Documentation
-
-- [ ] Dashboard user guide (how to view incidents, approve actions)
-- [ ] Developer guide (how to add new pages)
-- [ ] API documentation (Swagger/OpenAPI)
-- [ ] Database schema documentation
-
----
-
-## Why NOT Earlier? (Why not S7-S9)
-
-**Dashboard is NOT required until Approve phase matures**:
-
-- S4-S9: Focused on Read, Plan, Approve logic
-- Dashboard would sit idle without functional diagnostic data
-- Prioritizing core RPAE cycle first, UI second
-
-**Resources**:
-
-- S7-S9 should focus on Plan + Approve complexity
-- Dashboard development can't run in parallel (single developer team)
-- Better to deliver working logic + simple UI than complex UI + broken logic
-
----
-
-## Why NOT Later? (Why not S13)
-
-**Dashboard needed for MVP validation**:
-
-- S13-S15 must test with live incident data
-- Dashboard accelerates diagnostic review vs command-line tools
-- Demonstrates "full cycle" to stakeholders
-- Better user experience for MTTR measurement
-
----
-
-## Scope Changes (S12 Release)
-
-### Included in S12 Dashboard
-
-✅ Incident list (searchable, sortable)  
-✅ Incident detail with diagnostic context  
-✅ Approval status display  
-✅ Audit log viewer  
-✅ Authentication  
-✅ Read-only mode (no manual edits)
-
-### NOT Included (S13+)
-
-❌ Metrics/MTTR graphs (S16 in V1)  
-❌ Custom fields display (pending ADO-CUSTOM-FIELDS-ISAGRI.md)  
-❌ Cross-pipeline dependencies visualization (ADR-015: not MVP)  
-❌ Export functionality (S20)  
-❌ Webhook status / health checks (S20)
-
----
-
-## Dependencies
-
-| Dependency | Status | Owner | ETA |
-|-----------|--------|-------|-----|
-| Schema.sql finalized | ✅ Done | Architecture | S6 |
-| Schema_dai.sql finalized | ✅ Done | Architecture | S6 |
-| Approve phase complete | 🟡 In progress | DevOps | S11 |
-| Azure AD setup | 🟡 In progress | Security | S3 |
-| MCP integration | ✅ Done | OpenCode | S3 |
-
-**Critical path**: Approve phase must be stable by S12 for dashboard integration.
-
----
-
-## Risk Mitigation
-
-| Risk | Likelihood | Mitigation |
-|------|-----------|-----------|
-| Dashboard delay blocks MVP | Low | Dashboard is enhancement, not blocker |
-| Dashboard too complex | Medium | Limit features to MVP scope (list, detail, logs) |
-| Database schema incomplete | Low | Schema reviewed in S6 |
-| Authentication integration fails | Medium | Test Azure AD in S3, early integration |
-
----
-
-## Success Criteria
-
-- [ ] Dashboard deployed to staging by EOW S12
-- [ ] All dashboard features working in S13
-- [ ] Team can view incidents from dashboard
-- [ ] Performance: list loads in < 2 sec, detail in < 1 sec
-- [ ] No breaking changes to API between S12-S15
-- [ ] User feedback incorporated into V1 (S16)
-
----
-
-## References
-
-- [PLAN-REALISATION.md — Phase 3 timeline](../artifacts/07-PLAN-REALISATION.md)
-- [BACKLOG.md — MVP scope](../artifacts/09-BACKLOG.md)
-- [ADR-010: FastAPI + HTMX decision](ADR-010-fastapi-htmx.md)
-- [ADR-005: Dashboard MVP mandatory](ADR-005-dashboard-mvp.md)
-- [TECH-STACK.md — Dashboard tech choices](../artifacts/TECH-STACK.md)
-
----
-
-## Decision Log
-
-**2026-04-22**: ADR-016 created  
-- Resolved conflicting timeline interpretations
-- Confirmed S12 as dashboard build week
-- Confirmed S13-S15 for validation with live dashboard
-- Scope bounded to MVP features only
-
----
-
-**Approved by**: Product Lead + Architecture Lead  
-**Next review**: EOW S12 (progress check)
+- S13-S15 doit tester avec données incidents live
+- Dashboard accélère review diagnostics vs outils ligne de commande
+- Démontre "full cycle" aux stakeholders
+- Meilleure UX pour mesure MTTR

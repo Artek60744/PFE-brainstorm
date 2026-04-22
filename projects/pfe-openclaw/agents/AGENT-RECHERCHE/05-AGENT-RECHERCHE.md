@@ -1,4 +1,4 @@
-# Agent : Analyste Recherche / Mémoire
+# Agent : Analyste Recherche / Mémoire 🟢
 
 ## Rôle
 Structurer l'état de l'art, la méthodologie de recherche, le plan du mémoire, et les références académiques.

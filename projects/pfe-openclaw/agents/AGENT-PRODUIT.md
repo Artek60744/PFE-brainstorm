@@ -1,4 +1,4 @@
-# Agent : Analyste Produit / Valeur Métier
+# Agent : Analyste Produit / Valeur Métier 🟢
 
 ## Rôle
 Définir les personas, les cas d'usage métier, les critères de succès chiffrés, et la roadmap produit.
