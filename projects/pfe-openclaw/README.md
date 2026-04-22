@@ -14,7 +14,7 @@
 ## Configuration
 
 - **[project.yaml](project.yaml)** — Configuration technique du projet
-- **[PROJECT.md](PROJECT.md)** — Description narrative du projet
+- **[ROADMAP.md](ROADMAP.md)** — Feuille de route et timeline
 
 ---
 
@@ -57,6 +57,13 @@
 | [ADR-006](decisions/ADR-006-memoire-pipeline.md) | Mémoire par pipeline | Accepté |
 | [ADR-007](decisions/ADR-007-dryrun-obligatoire.md) | Dry-run obligatoire | Accepté |
 | [ADR-008](decisions/ADR-008-mesure-mttr-manuelle.md) | Mesure MTTR manuelle | Accepté |
+| [ADR-009](decisions/ADR-009-systeme-diagnostic.md) | Système diagnostic read-only | Accepté |
+| [ADR-010](decisions/ADR-010-fastapi-htmx.md) | FastAPI + HTMX pour dashboard | Accepté |
+| [ADR-011](decisions/ADR-011-polling-htmx.md) | Polling HTMX toutes les 5s | Accepté |
+| [ADR-012](decisions/ADR-012-trust-boundary.md) | Trust boundary: validation humaine | Accepté |
+| [ADR-013](decisions/ADR-013-diagnostic-sequentiel.md) | Diagnostic séquentiel (non parallèle) | Accepté |
+| [ADR-014](decisions/ADR-014-polling-dai.md) | Polling DAI release toutes les 30s | Accepté |
+| [ADR-015](decisions/ADR-015-no-correlation-mvp.md) | Pas de corrélation cross-pipeline en MVP | Accepté |
 
 ---
 
