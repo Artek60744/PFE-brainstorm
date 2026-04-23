@@ -477,9 +477,9 @@ az ad sp create --id ${APP_ID}
 
 | Service | Auth Method | Storage | Rotation |
 |---------|------------|---------|----------|
-| Azure DevOps | PAT | AWS Secrets Manager | 90 days |
-| Digital.ai Release | API Key | AWS Secrets Manager | 90 days |
-| Teams | Webhook URL | AWS Secrets Manager | Manual (if leaked) |
+| Azure DevOps | PAT | Azure KeyVault | 90 days |
+| Digital.ai Release | API Key | Azure KeyVault | 90 days |
+| Teams | Webhook URL | Azure KeyVault | Manual (if leaked) |
 
 ---
 
@@ -516,10 +516,43 @@ else:
 
 ### Q2: ✅ Credentials & Token Management Defined
 
-**Resolution**: Stored in AWS Secrets Manager:
-- `openclaw/ado-pat`
-- `openclaw/dai-api-key`
-- `openclaw/teams-webhook-url`
+**Resolution**: Stored in Azure KeyVault:
+- `openclaw-ado-pat`
+- `openclaw-dai-api-key`
+- `openclaw-teams-webhook-url`
+
+**Setup** (Phase 0):
+```bash
+# Create KeyVault (if not exists)
+az keyvault create --resource-group <rg> --name openclaw-vault
+
+# Add secrets
+az keyvault secret set --vault-name openclaw-vault --name "openclaw-ado-pat" --value "<PAT>"
+az keyvault secret set --vault-name openclaw-vault --name "openclaw-dai-api-key" --value "<API_KEY>"
+az keyvault secret set --vault-name openclaw-vault --name "openclaw-teams-webhook-url" --value "<WEBHOOK_URL>"
+
+# Grant OpenClaw app access (via Managed Identity or Service Principal)
+az keyvault set-policy --name openclaw-vault --object-id <APP_ID> --secret-permissions get list
+```
+
+**Retrieval in FastAPI**:
+```python
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url="https://openclaw-vault.vault.azure.net/", credential=credential)
+
+ado_pat = client.get_secret("openclaw-ado-pat").value
+dai_api_key = client.get_secret("openclaw-dai-api-key").value
+teams_webhook = client.get_secret("openclaw-teams-webhook-url").value
+```
+
+**Advantages**:
+- ✅ Native Azure integration (no extra service)
+- ✅ Automatic rotation via lifecycle policies
+- ✅ Audit logging in Azure Monitor
+- ✅ Role-based access control (RBAC)
 
 ### Q3: ✅ Dry-Run Mode Documented
 
@@ -547,7 +580,8 @@ See Section 2.1 for setup.
 - [ ] Azure DevOps PAT created with scopes: `vso.code_read`, `vso.build_read`, `vso.work_read`
 - [ ] Digital.ai Release API key created with `releases:read` permission
 - [ ] Teams webhook URL generated for `OPENCLAW-DIAGNOSTICS` channel
-- [ ] AWS Secrets Manager configured with 3 secrets
+- [ ] Azure KeyVault created and 3 secrets configured
+- [ ] OpenClaw app granted KeyVault secret access (via RBAC or Managed Identity)
 - [ ] OpenClaw environment variables set (dev, staging, prod)
 - [ ] MCP health checks passing (ADO, DAI, Teams)
 - [ ] Dry-run mode tested in staging (log-only, no changes)
