@@ -1,0 +1,107 @@
+╔════════════════════════════════════════════════════════════════╗
+║         LangGraph Dashboard - Quick Start Guide                ║
+║                                                                ║
+║  PFE Isagri | Framework: RPAE + MCP + LangGraph                ║
+║  Status: Sprint Ready (ADR-017: OpenClaw → LangGraph)          ║
+╚════════════════════════════════════════════════════════════════╝
+
+📍 WHERE ARE WE?
+================
+✅ Architecture + ADRs complete (010-015)
+✅ Database schemas done (ADO + DAI)
+✅ Dashboard skeleton ready (FastAPI + HTMX)
+🔴 MCP integrations blocked (awaiting Isagri infra)
+
+
+📋 FILES YOU NEED
+==================
+
+  1. ROADMAP.md              — Complete implementation plan (4 sprints)
+  2. TODO.md                 — Quick checklist for current sprint
+  3. BLOCKERS.md             — 10 open questions to resolve
+  4. LANGGRAPH-CONTEXT.md    — Agent memory + architecture
+  5. TRACKING-INDEX.md       — This index (how to use everything)
+  6. sessions/               — Session logs (start here if returning)
+
+
+🚀 START HERE (by role)
+========================
+
+  👨‍💼 PROJECT MANAGER?
+     → Read: PROJECT.md, OPENCLAW-CONTEXT.md
+     → Then: ROADMAP.md (estimate view)
+  
+  👨‍💻 DEVELOPER (Sprint 1A)?
+     → Read: ROADMAP.md (Sprint 1: MCP Integration)
+     → Do: artifacts/dashboard/dai_client.py
+     → Check: BLOCKERS.md (Q1, Q2, Q4 must be resolved)
+  
+  🛡️ DEVOPS / INFRA?
+     → Read: BLOCKERS.md (Q1-Q6)
+     → Resolve: Webhook URL, MCP servers, SSO
+  
+  🤖 LANGGRAPH AGENT?
+     → Read: LANGGRAPH-CONTEXT.md (full context)
+     → Reference: ROADMAP.md (when to act)
+     → See: decisions/ADR-*.md (design rationale)
+
+
+⏱️ TIME ESTIMATES
+==================
+
+  Sprint 1 (MCP Integration)  : 5 hours
+  Sprint 2 (Diagnostics)      : 2 hours
+  Sprint 3 (Auth + Security)  : 2 hours
+  Sprint 4 (Tests + Deploy)   : 2 hours
+  ─────────────────────────────────────────
+  TOTAL MVP                   : ~11 hours
+
+
+🔴 BLOCKERS RIGHT NOW
+======================
+
+  Before ANY coding starts, must have:
+  
+  □ MCP Digital.ai server URL + auth (Q1)
+  □ MCP Azure DevOps server URL + auth (Q2)
+  □ ADO webhook URL registered (Q3)
+  □ OpenClaw deployment info (Q4)
+  □ Isagri SSO/LDAP config (Q5)
+  □ Teams app ID + password (Q6)
+  
+  See: BLOCKERS.md for details
+
+
+📞 COMMUNICATION
+=================
+
+  Session complete?     → Update sessions/SESSION-YYYY-MM-DD.md
+  Blocker resolved?     → Update BLOCKERS.md (check box)
+  Task finished?        → Update TODO.md (check box)
+  Design decision?      → Create decisions/ADR-NXX-*.md
+  Question open?        → Add to BLOCKERS.md
+
+
+📊 FILE NAVIGATION
+===================
+
+  Architecture         → LANGGRAPH-CONTEXT.md, README.md
+  Implementation plan  → ROADMAP.md
+  Quick task list      → TODO.md
+  Blockers/risks       → BLOCKERS.md
+  This file            → QUICK-START.txt
+  All help             → TRACKING-INDEX.md
+
+
+💾 PERSISTENT MEMORY
+=====================
+
+  • All decisions archived in decisions/ADR-*.md
+  • All sessions logged in sessions/SESSION-*.md
+  • All tasks tracked in TODO.md (updated each session)
+  • All blockers logged in BLOCKERS.md
+
+
+Last updated: 2026-04-23
+Framework version: v2.0-langgraph
+Next review: Before Sprint 1A start
